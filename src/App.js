@@ -1,24 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
 
+import './App.css';
+import {RouterProvider,createBrowserRouter} from 'react-router-dom';
+import Login from './component/login/Login';
+import Dashboard from './component/dashboard/Dashboard';
+import Register from './component/register/Register';
+import Invoives from './component/dashboard/Invoives';
+import NewInvoice from './component/dashboard/NewInvoice';
+import Home from './component/dashboard/Home';
+import Setting from './component/dashboard/Setting';
+import InvoiceDetail from './component/dashboard/InvoiceDetail';
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+  const myRouter = createBrowserRouter([
+    {path:'',Component:Login},
+    {path:'/register',Component:Register},
+    {path:'/login',Component:Login},
+    {path:'/dashboard',Component:Dashboard,children:([
+      {path:'',Component:Home},
+      {path:'home',Component:Home},
+      {path:'invoices',Component:Invoives},
+      {path:'new-invoice',Component:NewInvoice },
+      {path:'settings',Component:Setting},
+      {path:'invoice-detail',Component:InvoiceDetail}
+    ])},
+    
+  ])
+return (
+  <div>
+   <RouterProvider router = {myRouter}/>
+   </div>
   );
 }
 

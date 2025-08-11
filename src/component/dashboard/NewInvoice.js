@@ -3,8 +3,7 @@ import '../dashboard/Dashboard.css';
 import {db} from '../../firebase';
 import { collection, addDoc ,Timestamp} from 'firebase/firestore';
 import { useNavigate } from 'react-router-dom';
-
-
+import loader from '../../assets/loader.gif'
 const NewInvoice = () => {
 const[to,setTo] = useState('');
 const[phone,setPhone]=useState('');
